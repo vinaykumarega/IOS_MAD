@@ -15,9 +15,57 @@ class FirstViewController: UIViewController {
     var stringarry = [String]()
     var randm: Int = 0
     
+    @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var SecondView: UIView!
     
     @IBOutlet weak var firstView: UIView!
+    
+    @IBAction func nameSubmitButton(_ sender: Any) {
+        
+        var userdatapath = NSHomeDirectory() + "Documents/userData.txt"
+        print(userdatapath)
+        var addme = 1
+        var i = 0
+        var userNameArray:[String] = []
+        
+        let manager = FileManager.default
+        if manager.fileExists(atPath: userdatapath){
+            
+            print("File Recognized")
+            
+        }
+        else{
+        
+            print("New File created")
+             NSKeyedArchiver.archiveRootObject(nameField.text!, toFile: userdatapath)
+        }
+        
+        
+        
+        if let userNames = try? String(contentsOfFile : userdatapath, encoding : String.Encoding.utf8)
+        {
+           
+            userNameArray = userNames.components(separatedBy: " ")
+            for _ in 0...userNameArray.count-1 {
+                
+                if userNameArray[i] == nameField.text!{
+                
+                    addme = 0
+                    print("User Name Retrived")
+                }
+            
+            }
+            if addme == 1{
+            
+                NSKeyedArchiver.archiveRootObject(nameField.text!, toFile: userdatapath)
+                print("user Name Saved001")
+            }
+            
+        }
+        
+    }
+    
+    
     
     @IBAction func firstViewSubmitButton(_ sender: Any) {
         
