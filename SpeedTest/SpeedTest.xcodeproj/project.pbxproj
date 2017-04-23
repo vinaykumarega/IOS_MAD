@@ -14,9 +14,8 @@
 		427FF1AF1EA71A0100F34A90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 427FF1AE1EA71A0100F34A90 /* Assets.xcassets */; };
 		427FF1B21EA71A0100F34A90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427FF1B01EA71A0100F34A90 /* LaunchScreen.storyboard */; };
 		427FF1BA1EA724EC00F34A90 /* wordParagraph.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */; };
-		42A29CA71EA8976D0058C930 /* SpeedTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A29CA61EA8976D0058C930 /* SpeedTestModel.swift */; };
-		42A29CA91EA8978F0058C930 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A29CA81EA8978F0058C930 /* SettingsModel.swift */; };
-		42A29CAB1EA897AA0058C930 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A29CAA1EA897AA0058C930 /* StatisticsModel.swift */; };
+		42CE98231EAC8FC50058D181 /* UserDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE98221EAC8FC50058D181 /* UserDBModel.swift */; };
+		42CE98251EAC8FD80058D181 /* UserNameSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE98241EAC8FD80058D181 /* UserNameSpeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +28,8 @@
 		427FF1B11EA71A0100F34A90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		427FF1B31EA71A0100F34A90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = wordParagraph.rtf; sourceTree = "<group>"; };
-		42A29CA61EA8976D0058C930 /* SpeedTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedTestModel.swift; sourceTree = "<group>"; };
-		42A29CA81EA8978F0058C930 /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
-		42A29CAA1EA897AA0058C930 /* StatisticsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
+		42CE98221EAC8FC50058D181 /* UserDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBModel.swift; sourceTree = "<group>"; };
+		42CE98241EAC8FD80058D181 /* UserNameSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameSpeed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +70,8 @@
 				427FF1B01EA71A0100F34A90 /* LaunchScreen.storyboard */,
 				427FF1B31EA71A0100F34A90 /* Info.plist */,
 				427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */,
-				42A29CA61EA8976D0058C930 /* SpeedTestModel.swift */,
-				42A29CA81EA8978F0058C930 /* SettingsModel.swift */,
-				42A29CAA1EA897AA0058C930 /* StatisticsModel.swift */,
+				42CE98221EAC8FC50058D181 /* UserDBModel.swift */,
+				42CE98241EAC8FD80058D181 /* UserNameSpeed.swift */,
 			);
 			path = SpeedTest;
 			sourceTree = "<group>";
@@ -153,10 +150,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				427FF1AA1EA71A0100F34A90 /* SecondViewController.swift in Sources */,
-				42A29CA91EA8978F0058C930 /* SettingsModel.swift in Sources */,
-				42A29CAB1EA897AA0058C930 /* StatisticsModel.swift in Sources */,
-				42A29CA71EA8976D0058C930 /* SpeedTestModel.swift in Sources */,
+				42CE98251EAC8FD80058D181 /* UserNameSpeed.swift in Sources */,
 				427FF1A61EA71A0100F34A90 /* AppDelegate.swift in Sources */,
+				42CE98231EAC8FC50058D181 /* UserDBModel.swift in Sources */,
 				427FF1A81EA71A0100F34A90 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

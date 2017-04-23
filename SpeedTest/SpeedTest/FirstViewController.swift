@@ -11,10 +11,12 @@ import UIKit
 class FirstViewController: UIViewController {
     
     var timer1 : Timer!
+    var userDataModel = userDBModel()
     
     var stringarry = [String]()
     var randm: Int = 0
     
+    @IBOutlet weak var DisplayName: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var SecondView: UIView!
     
@@ -22,57 +24,42 @@ class FirstViewController: UIViewController {
     
     @IBAction func nameSubmitButton(_ sender: Any) {
         
-        var userdatapath = NSHomeDirectory() + "Documents/userData.txt"
-        print(userdatapath)
-        var addme = 1
-        var i = 0
-        var userNameArray:[String] = []
+     var i = 0
+     var addme = 0
         
-        let manager = FileManager.default
-        if manager.fileExists(atPath: userdatapath){
+    unarchive()
+        
+    var lastuser = userDataModel.userdetails.count
+        
+        
+        for i in 0...userDataModel.userdetails.count{
+        
+            if userDataModel.userdetails[i].username == nameField.text!{
             
-            print("File Recognized")
-            
-        }
-        else{
-        
-            print("New File created")
-             NSKeyedArchiver.archiveRootObject(nameField.text!, toFile: userdatapath)
-        }
-        
-        
-        
-        if let userNames = try? String(contentsOfFile : userdatapath, encoding : String.Encoding.utf8)
-        {
-           
-            userNameArray = userNames.components(separatedBy: " ")
-            for _ in 0...userNameArray.count-1 {
-                
-                if userNameArray[i] == nameField.text!{
-                
-                    addme = 0
-                    print("User Name Retrived")
-                }
+            addme = 0
             
             }
-            if addme == 1{
+            else {
             
-                NSKeyedArchiver.archiveRootObject(nameField.text!, toFile: userdatapath)
-                print("user Name Saved001")
+            addme = 1
             }
-            
         }
+
+        if addme == 1{
         
-    }
-    
-    
-    
-    @IBAction func firstViewSubmitButton(_ sender: Any) {
+        userDataModel.userdetails[lastuser + 1].username = nameField.text!
+        archive()
         
+        }
         firstView.isHidden = true
         SecondView.isHidden = false
+        DisplayName.text! = nameField.text!
         
     }
+    
+    
+    
+   
     @IBOutlet weak var pausevisible: UIButton!
     
     @IBAction func pausebutton(_ sender: UIButton) {
@@ -111,10 +98,43 @@ class FirstViewController: UIViewController {
         stringarry = fileContent.components(separatedBy: " ")
         timer1.fire()
         
-        //Displayword.text! = stringarry[0]
+        unarchive()
+        var i = 0
         
-       
+        for i in 1...userDataModel.userdetails.count{
+        
+            if userDataModel.userdetails[i].username == nameField.text!{
+            
+            break
+            
+            }
+        
+        }
+        userDataModel.userdetails[i].userSpeed.append(Int(wpmSpeed.text!)!)
+        archive()
+        
+        
     }
+    
+    func archive(){
+    
+        let userdatapath = NSHomeDirectory() + "Documents/userData.archive"
+        print(userdatapath)
+        NSKeyedArchiver.archiveRootObject(userDataModel.userdetails, toFile: userdatapath)
+        
+    }
+    
+    func unarchive(){
+    
+        let userdatapath = NSHomeDirectory() + "Documents/userData.archive"
+        let manager = FileManager.default
+        if manager.fileExists(atPath: userdatapath){
+        
+          userDataModel.userdetails = NSKeyedUnarchiver.unarchiveObject(withFile: userdatapath) as! [UserNameSpeed]
+        }
+    
+    }
+    
     func timerAction(){
         
        randm = stringarry.count
@@ -124,11 +144,12 @@ class FirstViewController: UIViewController {
         
     }
     
-   
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         pausevisible.isHidden = true
+        SecondView.isHidden = true
        
         
         // Do any additional setup after loading the view, typically from a nib.
