@@ -12,7 +12,8 @@ class FirstViewController: UIViewController {
     
     var timer1 : Timer!
     var userDataModel = userDBModel()
-    
+    var uname: String = ""
+    var uspeed = [Int]()
     var stringarry = [String]()
     var randm: Int = 0
     
@@ -22,41 +23,15 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var firstView: UIView!
     
-    @IBAction func nameSubmitButton(_ sender: Any) {
-        
-     var i = 0
-     var addme = 0
-        
-    unarchive()
-        
-    var lastuser = userDataModel.userdetails.count
+    
+    @IBAction func nameSubmitButton(_ sender: UIButton) {
         
         
-        for i in 0...userDataModel.userdetails.count{
-        
-            if userDataModel.userdetails[i].username == nameField.text!{
-            
-            addme = 0
-            
-            }
-            else {
-            
-            addme = 1
-            }
-        }
-
-        if addme == 1{
-        
-        userDataModel.userdetails[lastuser + 1].username = nameField.text!
-        archive()
-        
-        }
         firstView.isHidden = true
         SecondView.isHidden = false
         DisplayName.text! = nameField.text!
-        
-    }
-    
+        print("submit pressed")
+        }
     
     
    
@@ -65,7 +40,7 @@ class FirstViewController: UIViewController {
     @IBAction func pausebutton(_ sender: UIButton) {
         
         timer1.invalidate()
-        
+        print(userDataModel.userdetails)
     }
     @IBOutlet weak var Displayword: UILabel!
     
@@ -73,6 +48,7 @@ class FirstViewController: UIViewController {
     
     @IBAction func starttest(_ sender: UIButton) {
         
+        var userelement = UserNameSpeed(username: uname, userSpeed: uspeed)
         pausevisible.isHidden = false
         
         var wpm: Double = 0
@@ -98,43 +74,98 @@ class FirstViewController: UIViewController {
         stringarry = fileContent.components(separatedBy: " ")
         timer1.fire()
         
-        unarchive()
-        var i = 0
         
-        for i in 1...userDataModel.userdetails.count{
+        var i1 = 0
+        var addme = 0
         
-            if userDataModel.userdetails[i].username == nameField.text!{
+        var creatfile = 0
+        creatfile = unarchive1()
+        if creatfile == 1{
             
-            break
+            userelement.username = DisplayName.text!
+            userelement.userSpeed.append(Int(wpmSpeed.text!)!)
+            userDataModel.userdetails.append(userelement)
             
-            }
-        
+            archive()
+            
         }
-        userDataModel.userdetails[i].userSpeed.append(Int(wpmSpeed.text!)!)
-        archive()
+        unarchive()
+        
+        userelement.username = DisplayName.text!
+        userelement.userSpeed.append(Int(wpmSpeed.text!)!)
+        print(userDataModel.userdetails.count)
+        var lastuser = userDataModel.userdetails.count
+        
+        if lastuser >= 2 {
+            
+        
+        for i1 in 0...lastuser-1{
+            
+            if userDataModel.userdetails[i1].username == nameField.text!{
+                
+                addme = 0
+                
+            }
+            else {
+                
+                addme = 1
+            }
+        }
+        
+        if addme == 1{
+            
+            userDataModel.userdetails.append(userelement)
+            archive()
+            
+        }
+
+    }
+    }
+    
+    @IBAction func gobackButton(_ sender: UIButton) {
+        
+        SecondView.isHidden = true
+        firstView.isHidden = false
         
         
     }
-    
     func archive(){
     
         let userdatapath = NSHomeDirectory() + "Documents/userData.archive"
-        print(userdatapath)
+        print(userdatapath + "/n archiving")
         NSKeyedArchiver.archiveRootObject(userDataModel.userdetails, toFile: userdatapath)
+        sync()
         
     }
     
-    func unarchive(){
+    func unarchive1() -> Int {
     
         let userdatapath = NSHomeDirectory() + "Documents/userData.archive"
         let manager = FileManager.default
         if manager.fileExists(atPath: userdatapath){
         
           userDataModel.userdetails = NSKeyedUnarchiver.unarchiveObject(withFile: userdatapath) as! [UserNameSpeed]
+              return 0
         }
+        else
+        {
+            print("File not Found")
+            return 1
+        }
+      
     
     }
-    
+    func unarchive() {
+        
+        let userdatapath = NSHomeDirectory() + "Documents/userData.archive"
+        let manager = FileManager.default
+        if manager.fileExists(atPath: userdatapath){
+            
+            userDataModel.userdetails = NSKeyedUnarchiver.unarchiveObject(withFile: userdatapath) as! [UserNameSpeed]
+            print("\(userDataModel.userdetails)")
+        }
+        
+    }
     func timerAction(){
         
        randm = stringarry.count
@@ -148,9 +179,8 @@ class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        pausevisible.isHidden = true
+        //pausevisible.isHidden = true
         SecondView.isHidden = true
-       
         
         // Do any additional setup after loading the view, typically from a nib.
     }
