@@ -16,6 +16,8 @@
 		427FF1BA1EA724EC00F34A90 /* wordParagraph.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */; };
 		42CE98231EAC8FC50058D181 /* UserDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE98221EAC8FC50058D181 /* UserDBModel.swift */; };
 		42CE98251EAC8FD80058D181 /* UserNameSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE98241EAC8FD80058D181 /* UserNameSpeed.swift */; };
+		42DAA8B01EB1FD2F009D7305 /* forindex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAA8AF1EB1FD2F009D7305 /* forindex.swift */; };
+		42DAA8B41EB205C1009D7305 /* mycustomtabcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAA8B31EB205C1009D7305 /* mycustomtabcontrollerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = wordParagraph.rtf; sourceTree = "<group>"; };
 		42CE98221EAC8FC50058D181 /* UserDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBModel.swift; sourceTree = "<group>"; };
 		42CE98241EAC8FD80058D181 /* UserNameSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameSpeed.swift; sourceTree = "<group>"; };
+		42DAA8AF1EB1FD2F009D7305 /* forindex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forindex.swift; sourceTree = "<group>"; };
+		42DAA8B31EB205C1009D7305 /* mycustomtabcontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mycustomtabcontrollerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */,
 				42CE98221EAC8FC50058D181 /* UserDBModel.swift */,
 				42CE98241EAC8FD80058D181 /* UserNameSpeed.swift */,
+				42DAA8AF1EB1FD2F009D7305 /* forindex.swift */,
+				42DAA8B31EB205C1009D7305 /* mycustomtabcontrollerViewController.swift */,
 			);
 			path = SpeedTest;
 			sourceTree = "<group>";
@@ -149,8 +155,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42DAA8B01EB1FD2F009D7305 /* forindex.swift in Sources */,
 				427FF1AA1EA71A0100F34A90 /* SecondViewController.swift in Sources */,
 				42CE98251EAC8FD80058D181 /* UserNameSpeed.swift in Sources */,
+				42DAA8B41EB205C1009D7305 /* mycustomtabcontrollerViewController.swift in Sources */,
 				427FF1A61EA71A0100F34A90 /* AppDelegate.swift in Sources */,
 				42CE98231EAC8FC50058D181 /* UserDBModel.swift in Sources */,
 				427FF1A81EA71A0100F34A90 /* FirstViewController.swift in Sources */,
