@@ -13,8 +13,8 @@ class UserNameSpeed: NSObject, NSCoding{
 
     var username:String
     var userSpeed = [Int]()
-    var defaultSpeed = 100
-    var delay = 2
+    var defaultSpeed: Int32 = 100
+    var delay: Int32 = 2
    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(username, forKey: "username1")
@@ -27,8 +27,13 @@ class UserNameSpeed: NSObject, NSCoding{
     required init?(coder aDecoder: NSCoder) {
         username = aDecoder.decodeObject(forKey: "username1") as! String
         userSpeed = aDecoder.decodeObject(forKey: "userspeeds") as! [Int]
-        defaultSpeed = aDecoder.decodeObject(forKey: "DefaultSpeed") as! Int
-        delay = aDecoder.decodeObject(forKey:"Delay") as! Int
+        
+      //defaultSpeed = Int(aDecoder.decodeObject(forKey: "DefaultSpeed") as! String) == nil ? 0 : Int(aDecoder.decodeObject(forKey: "DefaultSpeed") as! String)!
+        
+       // delay = Int(aDecoder.decodeObject(forKey: "Delay") as! String) == nil ? 0 : Int(aDecoder.decodeObject(forKey: "Delay") as! String)!
+        defaultSpeed = aDecoder.decodeInt32(forKey: "DefaultSpeed")
+        
+        delay = aDecoder.decodeInt32(forKey: "Delay")
         
     }
     
@@ -36,6 +41,8 @@ class UserNameSpeed: NSObject, NSCoding{
     {
         self.username = username
         self.userSpeed = userSpeed
+        self.defaultSpeed = 100
+        self.delay = 2
         
     }
     

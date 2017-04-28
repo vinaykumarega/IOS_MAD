@@ -10,8 +10,12 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    var userName: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tbc1 = tabBarController as! mycustomtabcontrollerViewController
+        userName = tbc1.usernme
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

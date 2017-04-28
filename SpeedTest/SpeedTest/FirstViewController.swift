@@ -12,11 +12,12 @@ class FirstViewController: UIViewController {
     
     var timer1 : Timer!
     var userDataModel = userDBModel()
-    var indexobj = Onlyforindex()
     var uname: String = ""
     var uspeed = [Int]()
     var stringarry = [String]()
     var randm: Int = 0
+    var index = 0
+    
     
     @IBOutlet weak var DisplayName: UILabel!
     @IBOutlet weak var nameField: UITextField!
@@ -33,21 +34,11 @@ class FirstViewController: UIViewController {
         SecondView.isHidden = false
         DisplayName.text! = nameField.text!
         print("submit pressed")
-        for i2 in 0...j-1{
         
-            if userDataModel.userdetails[i2].username == DisplayName.text!
-            {
-            indexobj.index = i2
-            }
-            else{
-            
-            indexobj.index = userDataModel.userdetails.count
-            }
+         let tbc1 = tabBarController as! mycustomtabcontrollerViewController
+            tbc1.usernme = DisplayName.text! }
         
         
-        }
-        
-        }
     
     
    
@@ -73,6 +64,7 @@ class FirstViewController: UIViewController {
         wpm = Double(wpmSpeed.text!)!
         
         var timeintrval: TimeInterval = (60 / wpm)
+        
         
         timer1 = Timer.scheduledTimer(timeInterval: timeintrval, target: self, selector:#selector(timerAction), userInfo: nil, repeats: true)
         
@@ -117,7 +109,7 @@ class FirstViewController: UIViewController {
         
         
             
-        
+            if lastuser >= 1{
         for i1 in 0...lastuser-1 {
             
             if userDataModel.userdetails[i1].username == DisplayName.text!{
@@ -132,7 +124,12 @@ class FirstViewController: UIViewController {
                 addme = 1
             }
         }
-        
+            }
+            else{
+            
+                addme = 1
+            
+            }
         if addme == 1{
             
             userDataModel.userdetails.append(userelement)
@@ -146,28 +143,24 @@ class FirstViewController: UIViewController {
             archive()
             
             }
-            lastuser = userDataModel.userdetails.count
-            for i1 in 0...lastuser-1 {
             
-                if userDataModel.userdetails[i1].username == DisplayName.text!{
-                
-                    if let tbc = self.tabBarController as! mycustomtabcontrollerViewController{
-                    
-                
-                        
-                    }
-                }
             
-            }
     
         }
        var lastuser = userDataModel.userdetails.count
+        if lastuser >= 1{
         for i1 in 0...lastuser-1{
         
             print("\(userDataModel.userdetails[i1].username)")
             print( "\(userDataModel.userdetails[i1].userSpeed)")
             print("\(userDataModel.userdetails[i1].defaultSpeed)")
             print("\(userDataModel.userdetails[i1].delay)")
+        
+        }
+        }
+        else{
+        
+            print("some error in saving")
         
         }
         
@@ -181,9 +174,34 @@ class FirstViewController: UIViewController {
         
         
     }
+    func findindex(){
+        
+        var lastuser = userDataModel.userdetails.count
+        
+        if lastuser >= 1 {
+            for i1 in 0...lastuser-1 {
+                
+                if userDataModel.userdetails[i1].username == DisplayName.text! {
+                    
+                    
+                    index = i1
+                    break
+                    
+                }
+                
+                
+            }
+            
+        }
+        else{
+            
+            index = 0
+            
+        }
+    }
     func archive(){
     
-        let userdatapath = NSHomeDirectory() + "/Documents/userData.archive"
+        let userdatapath = NSHomeDirectory() + "/Documents/userData1.archive"
         print(userdatapath)
     
         NSKeyedArchiver.archiveRootObject(userDataModel.userdetails, toFile: userdatapath)
@@ -193,7 +211,7 @@ class FirstViewController: UIViewController {
     
     func unarchive1() -> Int {
     
-        let userdatapath = NSHomeDirectory() + "/Documents/userData.archive"
+        let userdatapath = NSHomeDirectory() + "/Documents/userData1.archive"
         let manager = FileManager.default
         if manager.fileExists(atPath: userdatapath){
         
@@ -210,7 +228,7 @@ class FirstViewController: UIViewController {
     }
     func unarchive() {
         
-        let userdatapath = NSHomeDirectory() + "/Documents/userData.archive"
+        let userdatapath = NSHomeDirectory() + "/Documents/userData1.archive"
         let manager = FileManager.default
         if manager.fileExists(atPath: userdatapath){
             
@@ -230,28 +248,32 @@ class FirstViewController: UIViewController {
     
     func unarchive(_ notification:Notification) {
         print("Unarchiving")
-        let path = NSHomeDirectory() + "/Documents/userData.archive"
+        let path = NSHomeDirectory() + "/Documents/userData1.archive"
         let manager = FileManager.default
         if manager.fileExists(atPath: path) {
             userDataModel.userdetails = NSKeyedUnarchiver.unarchiveObject(withFile: path)
                 as! [UserNameSpeed]
         }
+        
     }
     
     func archive(_ notification: Notification) {
         print("Archiving")
-        let path = NSHomeDirectory() + "/Documents/userData.archive"
+        let path = NSHomeDirectory() + "/Documents/userData1.archive"
         NSKeyedArchiver.archiveRootObject(userDataModel.userdetails,
                                           toFile: path)
     }
 
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         //pausevisible.isHidden = true
         SecondView.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.archive(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.unarchive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+       NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.unarchive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        findindex()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
