@@ -62,32 +62,65 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
     var i = 0
     var speed: Int = 0
     var name: String = ""
+    var name1: String = ""
     let usercellIdentifier = "userspeed"
+    var j: Int = 0
     var cell =
         tableView.dequeueReusableCell(withIdentifier:
             usercellIdentifier, for: indexPath)
     i = findindex()
-   
-    var lastone = userDataModel.userdetails.count
     
-    print("cell creation")
-    if indexPath.section == 0 {
+    var lastone = userDataModel.userdetails[i].userSpeed.count
    
-        speed = userDataModel.userdetails[i].userSpeed[indexPath.row]
+   
+    if indexPath.section == 1 {
+    
+    name = userDataModel.userdetails[indexPath.row].username
+    name1 = "\(userDataModel.userdetails[indexPath.row].userSpeed.max()!)"
+    cell.textLabel?.text = name
+    cell.detailTextLabel?.text = name1
+        
+    return cell
     }
     else{
-    
-  name = userDataModel.userdetails[indexPath.row].username
-    
+        if indexPath.row == 0 {
+        j = lastone - (indexPath.row + 1 )
+        speed = userDataModel.userdetails[i].userSpeed[j]
+            cell.textLabel?.text = "Recent Speed #1:"
+            cell.detailTextLabel?.text = "\(speed)"
+        return cell
+        }
+        else if indexPath.row == 1 {
+        
+            
+                j = lastone - (indexPath.row + 1 )
+                speed = userDataModel.userdetails[i].userSpeed[j]
+                cell.textLabel?.text = "Recent Speed #2:"
+                cell.detailTextLabel?.text = "\(speed)"
+                return cell
+        }
+        else
+        {
+            
+                j = lastone - (indexPath.row + 1 )
+                speed = userDataModel.userdetails[i].userSpeed[j]
+                cell.textLabel?.text = "Recent Speed #3:"
+                cell.detailTextLabel?.text = "\(speed)"
+                return cell
+        }
     }
-    cell.textLabel?.text = "\(speed)"
-
-    if indexPath.section == 1{
-    
-        cell.detailTextLabel?.text = "\(userDataModel.userdetails[indexPath.row].userSpeed.max())"
-    
     }
-    return cell
+    
+    func unarchive() {
+        
+        let userdatapath = NSHomeDirectory() + "/Documents/userData1.archive"
+        let manager = FileManager.default
+        if manager.fileExists(atPath: userdatapath){
+            
+            userDataModel.userdetails = NSKeyedUnarchiver.unarchiveObject(withFile: userdatapath) as! [UserNameSpeed]
+            print("\(userDataModel.userdetails)")
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -96,7 +129,7 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
         self.tableView.dataSource = self
         let tbc1 = tabBarController as! mycustomtabcontrollerViewController
         userName = tbc1.usernme
-        
+        unarchive()
     }
     
     override func didReceiveMemoryWarning() {

@@ -18,8 +18,7 @@ class FirstViewController: UIViewController {
     var randm: Int = 0
     var index = 0
     
-    
-    @IBOutlet weak var DisplayName: UILabel!
+        @IBOutlet weak var DisplayName: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var SecondView: UIView!
     
@@ -32,12 +31,12 @@ class FirstViewController: UIViewController {
         var j = userDataModel.userdetails.count
         firstView.isHidden = true
         SecondView.isHidden = false
+        pausevisible.isHidden = true
         DisplayName.text! = nameField.text!
         print("submit pressed")
         
-         let tbc1 = tabBarController as! mycustomtabcontrollerViewController
-            tbc1.usernme = DisplayName.text! }
-        
+        }
+    
         
     
     
@@ -57,7 +56,7 @@ class FirstViewController: UIViewController {
         
         var userelement = UserNameSpeed(username: uname, userSpeed: uspeed)
         pausevisible.isHidden = false
-        
+        var path = Bundle.main
         var wpm: Double = 0
         var delaytime: Int
         
@@ -68,11 +67,11 @@ class FirstViewController: UIViewController {
         
         timer1 = Timer.scheduledTimer(timeInterval: timeintrval, target: self, selector:#selector(timerAction), userInfo: nil, repeats: true)
         
-        let location  = "/Users/sce/Documents/Developer_MAD/SpeedTest/SpeedTest/textfile.txt"
+        let location  = path.path(forResource: "Words", ofType: ".rtf")
         
         var fileContent: NSString = ""
         
-        do { try  fileContent = NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
+        do { try  fileContent = NSString(contentsOfFile: location!, encoding: String.Encoding.utf8.rawValue)
         }
     
         catch is NSError  {
@@ -270,6 +269,8 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         //pausevisible.isHidden = true
         SecondView.isHidden = true
+        let tbc1 = self.tabBarController as! mycustomtabcontrollerViewController
+        tbc1.usernme = DisplayName.text!
         NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.archive(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
        NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.unarchive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         findindex()

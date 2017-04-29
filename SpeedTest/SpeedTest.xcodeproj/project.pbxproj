@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		423875371EB411650052C0D3 /* Words.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 423875361EB411650052C0D3 /* Words.rtf */; };
 		427FF1A61EA71A0100F34A90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FF1A51EA71A0100F34A90 /* AppDelegate.swift */; };
 		427FF1A81EA71A0100F34A90 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FF1A71EA71A0100F34A90 /* FirstViewController.swift */; };
 		427FF1AA1EA71A0100F34A90 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FF1A91EA71A0100F34A90 /* SecondViewController.swift */; };
 		427FF1AD1EA71A0100F34A90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427FF1AB1EA71A0100F34A90 /* Main.storyboard */; };
 		427FF1AF1EA71A0100F34A90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 427FF1AE1EA71A0100F34A90 /* Assets.xcassets */; };
 		427FF1B21EA71A0100F34A90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427FF1B01EA71A0100F34A90 /* LaunchScreen.storyboard */; };
-		427FF1BA1EA724EC00F34A90 /* wordParagraph.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */; };
 		42B720931EB2FC5F0070CB84 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B720921EB2FC5F0070CB84 /* ThirdViewController.swift */; };
 		42B720951EB322560070CB84 /* StatisticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B720941EB322560070CB84 /* StatisticsTableViewController.swift */; };
 		42CE98231EAC8FC50058D181 /* UserDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE98221EAC8FC50058D181 /* UserDBModel.swift */; };
@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		423875361EB411650052C0D3 /* Words.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Words.rtf; sourceTree = "<group>"; };
 		427FF1A21EA71A0100F34A90 /* SpeedTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		427FF1A51EA71A0100F34A90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		427FF1A71EA71A0100F34A90 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -30,7 +31,6 @@
 		427FF1AE1EA71A0100F34A90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		427FF1B11EA71A0100F34A90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		427FF1B31EA71A0100F34A90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = wordParagraph.rtf; sourceTree = "<group>"; };
 		42B720921EB2FC5F0070CB84 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		42B720941EB322560070CB84 /* StatisticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewController.swift; sourceTree = "<group>"; };
 		42CE98221EAC8FC50058D181 /* UserDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBModel.swift; sourceTree = "<group>"; };
@@ -75,12 +75,12 @@
 				427FF1AE1EA71A0100F34A90 /* Assets.xcassets */,
 				427FF1B01EA71A0100F34A90 /* LaunchScreen.storyboard */,
 				427FF1B31EA71A0100F34A90 /* Info.plist */,
-				427FF1B91EA724EC00F34A90 /* wordParagraph.rtf */,
 				42CE98221EAC8FC50058D181 /* UserDBModel.swift */,
 				42CE98241EAC8FD80058D181 /* UserNameSpeed.swift */,
 				42DAA8B31EB205C1009D7305 /* mycustomtabcontrollerViewController.swift */,
 				42B720921EB2FC5F0070CB84 /* ThirdViewController.swift */,
 				42B720941EB322560070CB84 /* StatisticsTableViewController.swift */,
+				423875361EB411650052C0D3 /* Words.rtf */,
 			);
 			path = SpeedTest;
 			sourceTree = "<group>";
@@ -145,8 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				427FF1B21EA71A0100F34A90 /* LaunchScreen.storyboard in Resources */,
-				427FF1BA1EA724EC00F34A90 /* wordParagraph.rtf in Resources */,
 				427FF1AF1EA71A0100F34A90 /* Assets.xcassets in Resources */,
+				423875371EB411650052C0D3 /* Words.rtf in Resources */,
 				427FF1AD1EA71A0100F34A90 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

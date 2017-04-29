@@ -27,7 +27,7 @@ class ThirdViewController: UIViewController {
         userDataModel.userdetails[index].defaultSpeed = Int32(defaultspd.text!)!
         userDataModel.userdetails[index].delay = Int32(delay1.text!)!
         archive()
-        
+        unarchive()
         print("After value changed")
         print("\(userDataModel.userdetails[index].defaultSpeed)")
         print("\(userDataModel.userdetails[index].delay)")
@@ -66,12 +66,10 @@ class ThirdViewController: UIViewController {
                 index = i1
                 break
                 
+                            }
             }
             
-    
-    }
-            
-    }
+        }
         else{
         
             index = 0
@@ -97,7 +95,6 @@ class ThirdViewController: UIViewController {
         print(userdatapath)
         
         NSKeyedArchiver.archiveRootObject(userDataModel.userdetails, toFile: userdatapath)
-        
         
     }
     
